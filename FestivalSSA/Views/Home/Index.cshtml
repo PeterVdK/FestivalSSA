@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FestivalSSA.Models.LineUp>
+
+@{
+    ViewBag.Title = "Line Up";
+}
+<form class="filter">
+    @using (Html.BeginForm("Index","Home",FormMethod.Get)){
+        <p>@Html.DropDownList("StageID", "Geen filter (stages)")</p>
+        <p>@Html.DropDownList("DateID", "Geen filter (dagen")</p>
+        <input type="submit" value="Filter" />
+    }
+</form>
+
+@if(Model!=null)
+{
+<table>
+    <tr>
+        <th>
+            @Html.Label("Dag")
+        </th>
+        <th>
+            @Html.Label("Start")
+        </th>
+        <th>
+            @Html.Label("Einde")
+        </th>
+        <th>
+            @Html.Label("Artiest")
+        </th>
+        <th>
+            @Html.Label("Stage")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Festivaldag.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Start)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Finish)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Band.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stage.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.BandID })
+        </td>
+    </tr>
+}
+    <tr>
+        <td>
+            <a href="/api/rssfeed">
+                <img src="@Url.Content("~/Content/Images/RSS.png")" style="width:20px;height:20px" />
+            </a>
+        </td>
+    </tr>
+</table>
+}

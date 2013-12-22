@@ -1,0 +1,27 @@
+﻿@model FestivalSSA.Models.Band
+
+@{
+    ViewBag.Title = "Details";
+}
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+<fieldset>
+    <legend>Band</legend>
+    <div class="display-field">
+        <div class="band">
+            <img src="@Url.Content("~/Content/Images/"+Model.Name+".jpg")" />
+        </div>
+        <p>@Html.DisplayFor(model => model.Description)</p>
+        <a href="@Html.DisplayFor(model => model.Facebook)" target="_blank">
+            <img src="@Url.Content("~/Content/Images/facebook.png")" alt="Facebook" />
+        </a>
+        <a href="@Html.DisplayFor(model => model.Twitter)" target="_blank">
+            <img src="@Url.Content("~/Content/Images/twitter.png")" alt="Twitter" />
+        </a>
+    </div>
+    <br />
+    <br />
+</fieldset>
+<p class="back">
+    @Html.ActionLink("Terug naar line up", "Index")
+</p>
