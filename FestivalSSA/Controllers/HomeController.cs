@@ -10,6 +10,7 @@ namespace FestivalSSA.Controllers
 {
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         public ActionResult Index(string stageid,string dateid)
         {
             var model = LineUpRepository.GetLineUp(stageid,dateid);
@@ -17,13 +18,42 @@ namespace FestivalSSA.Controllers
             ViewBag.DateID = new SelectList(FestivaldagRepository.GetFestivaldagen(), "ID", "Date");
             return View(model);
         }
-
-        public ActionResult Bestellen()
+        [Authorize]
+        public ActionResult Insert()
         {
-            ViewBag.Message = "Your app description page.";
-
+            ViewBag.TypeID = new SelectList(TickettypeRepository.GetTypes(), "ID", "Name");
             return View();
         }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Insert(Ticketholder reservatie)
+        {
+            ViewBag.TypeID = new SelectList(TickettypeRepository.GetTypes(), "ID", "Name");
+            if (ModelState.IsValid)
+            {
+                TicketholderRepository.InsertReservatie(reservatie);
+                return View("Ticket", reservatie);
+            }
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Reservaties()
+        {
+            var model = TicketholderRepository.GetReservaties();
+            return View(model);
+        }
+
+        [Authorize(Roles="Admin")]
+        public ActionResult Tickettypes()
+        {
+            var model = TickettypeRepository.GetTypes();
+            return View(model);
+        }
+
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             var model = BandRepository.FindById(id);

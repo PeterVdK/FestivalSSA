@@ -64,6 +64,5 @@ namespace FestivalSSA.Models.DAL
             lineup.Festivaldag = FestivaldagRepository.FindById(lineup.FestivaldagID);
             return lineup;
         }
-
     }
 }

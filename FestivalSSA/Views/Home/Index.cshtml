@@ -3,11 +3,11 @@
 @{
     ViewBag.Title = "Line Up";
 }
-<form class="filter">
+<form class="filterform">
     @using (Html.BeginForm("Index","Home",FormMethod.Get)){
-        <p>@Html.DropDownList("StageID", "Geen filter (stages)")</p>
-        <p>@Html.DropDownList("DateID", "Geen filter (dagen")</p>
-        <input type="submit" value="Filter" />
+        <p class="filter">@Html.DropDownList("StageID", "Geen filter (stages)")</p>
+        <p class="filter">@Html.DropDownList("DateID", "Geen filter (dagen)")</p>
+        <input class="button" type="submit" value="Filter" />
     }
 </form>
 
@@ -50,7 +50,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Stage.Name)
         </td>
-        <td>
+        <td class="detail">
             @Html.ActionLink("Details", "Details", new { id=item.BandID })
         </td>
     </tr>

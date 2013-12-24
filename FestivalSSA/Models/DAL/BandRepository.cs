@@ -41,7 +41,6 @@ namespace FestivalSSA.Models.DAL
             return GetList(sSQL, idPar)[0];
         }
 
-
         private static Band Fill(DbDataReader reader)
         {
             Band band = new Band();

@@ -1,0 +1,43 @@
+﻿@model FestivalSSA.Models.Ticketholder
+
+<fieldset class="ticket">
+    <legend>Ticketholder</legend>
+    <h1>Bedankt voor uw bestelling!</h1>
+    <div class="display-label">
+         @Html.Label("Naam")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.Label("Voornaam")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.Label("Email")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.Label("Aantal")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Amount)
+    </div>
+
+    <div class="display-label">
+         @Html.Label("Type")
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TypeID)
+    </div>
+</fieldset>
+<p class="back">
+    @Html.ActionLink("Terug naar tickets", "Insert")
+</p>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<FestivalSSA.Models.Ticketholder>
+
+@{
+    ViewBag.Title = "Reservaties";
+}
+<table>
+    <tr>
+        <th>
+            @Html.Label("Naam")
+        </th>
+        <th>
+            @Html.Label("Voornaam")
+        </th>
+        <th>
+            @Html.Label("Email")
+        </th>
+        <th>
+            @Html.Label("Aantal")
+        </th>
+        <th>
+            @Html.ActionLink("Tickettype", "Tickettypes")
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td class="email">
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type.Name)
+        </td>
+    </tr>
+}
+</table>

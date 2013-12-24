@@ -14,7 +14,10 @@
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Line Up", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Bestellen", "Bestellen", "Home")</li>
+                            <li>@Html.ActionLink("Tickets", "Insert", "Home")</li>
+                            @if (User.IsInRole("Admin")){
+                            <li>@Html.ActionLink("Reservaties", "Reservaties", "Home")</li>
+                            }
                         </ul>
                     </nav>
                 </div>
